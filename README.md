@@ -18,6 +18,7 @@ nmap target => port 623 => IPMI => Jackpot (https://www.youtube.com/watch?v=dQw4
 Heh .. I don't care, he doesn't care ... maybe you don't care ... lets hack the s**t out of it!
 
 # Hunting for IPMI
+### Normal peoples
 Well you could use nmap or anything that can give open ports and services at a local or not so local network. Yes sir, you could also use commercial tools like Nessus or Nexpose but at the end of day is still poor security of IPMI that can allow an attacker to hack it in under 5 minutes (if he writes commands in terminal by hand and tends to make lots of mistakes).
 But you know what? We can use Shodan (shodan.io) to search for a target (hei hei ... stop, stop .. be ethical!).
 
@@ -28,3 +29,31 @@ Well by doing that you will get like over 100.000 (> 100k) possible vulnerable s
 
 Don't you believe it? here is a picture of it:
 ![Sitting ducks for Hackers](https://preview.ibb.co/c506BF/ipmi.png)
+
+### Angry Hackers
+Just add your desired organization (org: ...)
+
+### Cyber Warfare
+Just add your desired country (country: ...)
+
+# Only one exploit and one vulnerability?
+Hell no!
+
+## Old school standard Usernames & Passwords
+tbc
+## IPMI Authentication Bypass via Cipher 0
+tbc
+## IPMI 2.0 RAKP Authentication Remote Password Hash Retrieval  (A: are you that serious?)
+tbc
+## IPMI Anonymous Authentication (B: yes)
+tbc
+## Supermicro IPMI UPnP Vulnerability (A: Is it going to end now?)
+tbc
+## Supermicro IPMI Clear-text Passwords (B: No)
+tbc
+
+### What is broken?
+### IPMI for sure is!
+
+# But what is the big deal?
+Just wait for it ... to be continued.
