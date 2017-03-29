@@ -21,7 +21,10 @@ Heh .. I don't care, he doesn't care ... maybe you don't care ... lets hack the 
 Well you could use nmap or anything that can give open ports and services at a local or not so local network. Yes sir, you could also use commercial tools like Nessus or Nexpose but at the end of day is still poor security of IPMI that can allow an attacker to hack it in under 5 minutes (if he writes commands in terminal by hand and tends to make lots of mistakes).
 But you know what? We can use Shodan (shodan.io) to search for a target (hei hei ... stop, stop .. be ethical!).
 
-Hunting tactics > open pc > connect to the internet (sarcasm) > Log in / Register to Shodan > Search for port:623 (#facepalm, #hacking_like_a_pro, #hashtag, #even_more_sarcasm)
+Hunting tactics > open pc > connect to the internet (sarcasm) > Log in / Register to Shodan > Search for port:623
+(#facepalm, #hacking_like_a_pro, #hashtag, #even_more_sarcasm)
+
 Well by doing that you will get like over 100.000 (> 100k) possible vulnerable servers from all around the world.
+
 Don't you believe it? here is a picture of it:
 ![Sitting ducks for Hackers](https://preview.ibb.co/c506BF/ipmi.png)
