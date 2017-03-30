@@ -79,7 +79,7 @@ $ ipmitool -I lanplus -H 10.0.0.99 -U Administrator -P FluffyWabbit user list
 ```
 Error: Unable to establish IPMI v2 / RMCP+ session
 Get User Access command failed (channel 14, user 1)
-`` 
+```
 $ ipmitool -I lanplus -C 0 -H 10.0.0.99 -U Administrator -P FluffyWabbit user list
 ```
 ID  Name        Callin  Link Auth    IPMI Msg  Channel Priv Limit
