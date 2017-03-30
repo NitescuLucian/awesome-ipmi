@@ -123,7 +123,17 @@ Server Name: host is unnamed
 Server Power: On
  
 </>hpiLO->
-
+#### How this work?
+```
+Hacker: I want to login!
+Server: Yes, please say your account and password!
+Hacker: Admin, Admin
+Server: Password incorect!
+Hacker: I want to login over an unecrypted chanel!
+Server: Yes, please say your account and password!
+Hacker: Admin, Admin
+Server: Access granted!
+```
 ## IPMI 2.0 RAKP Authentication Remote Password Hash Retrieval  (A: are you that serious?)
 tbc
 ## IPMI Anonymous Authentication (B: yes)
