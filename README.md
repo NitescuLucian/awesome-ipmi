@@ -52,6 +52,8 @@ Hell no!
 | Oracle/Sun Integrated Lights Out Manager (ILOM) | root             | changeme                                |
 | Supermicro IPMI (2.0)                           | ADMIN            | ADMIN                                   |
 
+This is no big deal but people just forget about IPMI protocol so they don't change password or restrict access at all.
+
 ## IPMI Authentication Bypass via Cipher 0
 Dan Farmer identified a serious failing of the IPMI 2.0 specification, namely that cipher type 0, an indicator that the client wants to use clear-text authentication, actually allows access with any password. Cipher 0 issues were identified in HP, Dell, and Supermicro BMCs, with the issue likely encompassing all IPMI 2.0 implementations. It is easy to identify systems that have cipher 0 enabled using the ipmi_cipher_zero module in the Metasploit Framework
 
