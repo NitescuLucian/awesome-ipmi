@@ -182,23 +182,7 @@ ID  Name        Callin  Link Auth    IPMI Msg  Channel Priv Limit
 3  admin            true    true      true      ADMINISTRATOR
 ```
 $ ipmitool -I lanplus -H 10.0.0.97 -U '' -P '' user set password 2 password
-## Contributing
-23
-​
-24
-1. Fork it
-25
-2. Create your feature branch (```git checkout -b my-new-feature```)
-26
-3. Commit your changes (```git commit -am 'Add some feature'```)
-27
-4. Push to the branch (```git push origin my-new-feature```)
-28
-5. Create new Pull Request
-29
-​
-30
-Donations at: https://www.paypal.me/LNitescu```
+```
 At this point we can login to the BMC over SSH using the new password for the root user account.
 ```
 $ ssh root@10.0.0.97
