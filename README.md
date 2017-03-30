@@ -27,7 +27,7 @@ Hunting tactics > open pc > connect to the internet (sarcasm) > Log in / Registe
 
 Well by doing that you will get like over 100.000 (> 100k) possible vulnerable servers from all around the world.
 
-Don't you believe it? here is a picture of it:
+Don't you believe it? Here is a picture of it:
 ![Sitting ducks for Hackers](https://preview.ibb.co/c506BF/ipmi.png)
 
 ### Angry Hackers
@@ -40,7 +40,16 @@ Just add your desired country (country: ...)
 Hell no!
 
 ## Old school standard Usernames & Passwords
-tbc
+| Product name                                    | Default username | Default password                        |
+|-------------------------------------------------|------------------|-----------------------------------------|
+| ASUS iKVM BMC                                   | admin            | admin                                   |
+| Dell Remote Access Card (iDRAC, DRAC)           | root             | calvin                                  |
+| Fujitsu Integrated Remote Management Controller | admin            | admin                                   |
+| HP Integrated Lights Out (iLO)                  | Administrator    | <factory randomized 8-character string> |
+| IBM Integrated Management Module (IMM)          | USERID           | PASSW0RD (with a zero)                  |
+| Oracle/Sun Integrated Lights Out Manager (ILOM) | root             | changeme                                |
+| Supermicro IPMI (2.0)                           | ADMIN            | ADMIN                                   |
+
 ## IPMI Authentication Bypass via Cipher 0
 tbc
 ## IPMI 2.0 RAKP Authentication Remote Password Hash Retrieval  (A: are you that serious?)
