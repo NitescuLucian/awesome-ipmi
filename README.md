@@ -111,9 +111,8 @@ ID  Name        Callin  Link Auth    IPMI Msg  Channel Priv Limit
 
 ``` 
 $ ssh backdoor@10.0.0.99
-```
-
 backdoor@10.0.0.99's password: password
+```
 
 User:backdoor logged-in to ILOMXQ3469216(10.0.0.99)
 
