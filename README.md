@@ -187,7 +187,7 @@ At this point we can login to the BMC over SSH using the new password for the ro
 $ ssh root@10.0.0.97
 root@10.0.0.97's password: password
 ```
->> SMASH-CLP Console v1.09 <<
+> > SMASH-CLP Console v1.09 <<
 ->
 #### How this works?
 
@@ -197,7 +197,7 @@ Server: Yes, please say your account and password! But here are all my accounts 
 Hacker: '','' (no account and no password)
 Server: Access granted!
 ```
-Crazy enought?
+Crazy enough?
 
 ## Supermicro IPMI UPnP Vulnerability (A: Is it going to end now?)
 tbc
