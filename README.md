@@ -242,19 +242,34 @@ $ cat /nv/PSBlock
 # But what is the big deal?
 Well the main issue is that this vulnerability is a well known vulnerability that no one cares about!
 
+#### Got root?
+In most of the cases an attacker can gain access to an administrative account with root permissons or can add another account with root permissions in 5 minutes or even less. 
+
+In other words: Game Over.
+
 #### IPMI DDOS BOTNET
 And because no one cares about it someone decided in 2014 to make an IPMI based botnet using over 100.000 compromise servers and used that botnet to send a 300Gbps DDoS Attack (personal proof of concept code will follow). 
 
 And were are we now? Same stage of security and hackers can find there targets using as an example (but not restricting to) Shodan.
 
+#### Do we really know the numbers?
 
+The answer is: NO. 
+Most of the server which are capable of using IPMI are using IPMI don't have a plubic IP address or the access to IPMI is restricted at network or firewall level.
 
+The problem is that in a real life scenario you don't just fight against external attackers and also you have to fight against internal attackers.
+
+Ok we know that are at least 100.000 vulnerable servers out there which can be accessed and hacked remotely but we don't know how many internal servers are and we can't say that Shodan checked every server for IPMI.
+
+# Best practice in securing IPMI?
+
+tbd...
 
 # Sources
 * https://community.rapid7.com/community/metasploit/blog/2013/07/02/a-penetration-testers-guide-to-ipmi
 * https://securityledger.com/2014/08/was-an-ipmi-flaw-behind-300gbps-ddos-attack-computerworlduk-com/
 
-## Contributing
+# Contributing
 
 1. Fork it
 2. Create your feature branch (```git checkout -b my-new-feature```)
