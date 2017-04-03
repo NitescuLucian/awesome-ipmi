@@ -255,7 +255,8 @@ And were are we now? Same stage of security and hackers can find there targets u
 #### Do we really know the numbers?
 
 The answer is: NO. 
-Most of the server which are capable of using IPMI are using IPMI don't have a plubic IP address or the access to IPMI is restricted at network or firewall level.
+
+Most of the server which are capable of using IPMI and are using IPMI don't have a plubic IP address or the access to IPMI is restricted at network or firewall level.
 
 The problem is that in a real life scenario you don't just fight against external attackers and also you have to fight against internal attackers.
 
