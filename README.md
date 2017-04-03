@@ -240,12 +240,20 @@ $ cat /nv/PSBlock
 #### IPMI for sure is!
 
 # But what is the big deal?
-Just wait for it ... to be continued.
+Well the main issue is that this vulnerability is a well known vulnerability that no one cares about!
+
+#### IPMI DDOS BOTNET
+And because no one cares about it someone decided in 2014 to make an IPMI based botnet using over 100.000 compromise servers and used that botnet to send a 300Gbps DDoS Attack (personal proof of concept code will follow). 
+
+And were are we know? Same stage of security and hackers can find there targets using as an example (but not restricting to) Shodan.
+
+
 
 
 # Sources
 * https://community.rapid7.com/community/metasploit/blog/2013/07/02/a-penetration-testers-guide-to-ipmi
- 
+* https://securityledger.com/2014/08/was-an-ipmi-flaw-behind-300gbps-ddos-attack-computerworlduk-com/
+
 ## Contributing
 
 1. Fork it
