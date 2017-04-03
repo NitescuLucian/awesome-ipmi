@@ -245,7 +245,7 @@ Well the main issue is that this vulnerability is a well known vulnerability tha
 #### IPMI DDOS BOTNET
 And because no one cares about it someone decided in 2014 to make an IPMI based botnet using over 100.000 compromise servers and used that botnet to send a 300Gbps DDoS Attack (personal proof of concept code will follow). 
 
-And were are we know? Same stage of security and hackers can find there targets using as an example (but not restricting to) Shodan.
+And were are we now? Same stage of security and hackers can find there targets using as an example (but not restricting to) Shodan.
 
 
 
